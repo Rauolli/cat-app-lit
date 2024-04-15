@@ -35,19 +35,19 @@ class Cat{
     set name(name){ this.#name = name; }
     set tiredness(tiredness){
         this.#tiredness = tiredness;
-        this.checkIfInsideRange(this.#tiredness); 
+        this.#tiredness = this.checkIfInsideRange(this.#tiredness); 
     }
     set hungriness(hunger){
         this.#hungriness = hunger; 
-        this.checkIfInsideRange(this.#hungriness);
+        this.#hungriness = this.checkIfInsideRange(this.#hungriness);
     }
     set cuddliness(cuddliness){ 
         this.#cuddliness = cuddliness; 
-        this.checkIfInsideRange(this.#cuddliness);
+        this.#cuddliness = this.checkIfInsideRange(this.#cuddliness);
     }
     set happiness(happiness){ 
         this.#happiness = happiness;
-        this.checkIfInsideRange(this.#happiness);
+        this.#happiness = this.checkIfInsideRange(this.#happiness);
     }
 
     set image(image){ this.#image = image; }

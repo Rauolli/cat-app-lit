@@ -1,5 +1,6 @@
-import { LitElement, css, html } from 'lit'
-import Cat from './cat-class.js'
+import { LitElement, css, html } from 'lit';
+import Cat from './cat-class.js';
+import {v4 as uuidv4} from 'uuid';
 
 /**
  * An example element.
@@ -17,7 +18,8 @@ export class ChangingMood extends LitElement {
     }
   }
   constructor() {
-    super()
+    super();
+    this.uniqueId = uuidv4();
   }
 
   render() {
@@ -45,7 +47,16 @@ export class ChangingMood extends LitElement {
       default:
         break;
     }
-    console.log(this.mood, 'Name: ' + this.cat.name, this.cat.printOutMoods());
+    const event = new CustomEvent('mood-changed', {
+      detail: {
+        cat: this.cat
+      },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(event);
+    
+    // console.log("Event: " + event.detail.cat.printOutMoods());
   }
 
   static get styles() {

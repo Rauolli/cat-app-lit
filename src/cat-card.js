@@ -42,6 +42,22 @@ export class CatCard extends LitElement {
     `
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('mood-changed', this.handleMoodChanged);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('mood-changed',this.handleMoodChanged);
+  }
+
+  handleMoodChanged(event) {
+    this.cat = event.detail.cat;
+    const catDesriptionComponent = this.shadowRoot.querySelector('cat-description');
+    catDesriptionComponent.cat = this.cat;
+    catDesriptionComponent.requestUpdate();
+  }
 
   set Image(image) {
     this.cat.image = image;

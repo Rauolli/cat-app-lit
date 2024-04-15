@@ -16,7 +16,6 @@ export class CatDescription extends LitElement {
         }
     }
 
-
     constructor() {
         super();
     }
@@ -34,7 +33,7 @@ export class CatDescription extends LitElement {
                 </section>
         `
     }
-    
+
     static get styles() {
         return css`
         ul{
@@ -43,12 +42,12 @@ export class CatDescription extends LitElement {
         li{
             list-style: none;
         }
-        .cat-description{
+        :host{
             max-width: 100%;
             min-width: 80%;
             margin: 2em auto;
             padding: 1em;
-            border-radius: 15px;
+            border-radius: 0.4rem;
             background-color: #1d4a2d;
             color: #e1e17a;
             font-size: 1.1rem;
