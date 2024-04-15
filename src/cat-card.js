@@ -36,9 +36,9 @@ export class CatCard extends LitElement {
                         <button id="feed-btn">OK</button>
                     </div>
                     <div class="brd">
-                        <label for="sleep-rng">Schlafen:</label>
-                        <input type="range" min="0" max="10" name="sleep" id="sleep-rng">
-                        <button id="sleep-btn">OK</button>
+                        <label for="sleep-rng">Spielen:</label>
+                        <input type="range" min="0" max="10" name="play" id="play-rng">
+                        <button id="play-btn">OK</button>
                     </div>
                     <div class="brd">
                         <label for="pet-rng">Streicheln:</label>
@@ -158,7 +158,8 @@ export class CatCard extends LitElement {
     button{
         background-color: rgba(4, 104, 67, 1);
         border: 1px solid rgb(2, 46, 30);
-        box-shadow: 3px 2px 6px rgba(45, 74, 57, 0.3);
+        box-shadow: 3px 2px 5px rgba(45, 74, 57, 0.3);
+        color: #cbcb70;
         padding: 0.2em 1em;
         border-radius: 3px;
         transition: all 0.3s;
@@ -166,7 +167,8 @@ export class CatCard extends LitElement {
 
     button:hover{
         background-color: rgba(6, 225, 145, 0.675);
-        transform: scale(1.15);
+        transform: scale(1.13);
+        color: #1f3c2a
     }
 
 
