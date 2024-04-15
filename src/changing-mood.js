@@ -18,8 +18,6 @@ export class ChangingMood extends LitElement {
   }
   constructor() {
     super()
-    this.cat = new Cat(this.name);
-    
   }
 
   render() {
@@ -34,7 +32,6 @@ export class ChangingMood extends LitElement {
 
   setMood(){ 
     const currentVal = this.shadowRoot.getElementById('rng-id').value;
-    console.log('Mood:'+ this.mood, 'set to:' + currentVal);
     switch (this.mood) {
       case 'feed':
          this.cat.feed(currentVal);
@@ -48,7 +45,7 @@ export class ChangingMood extends LitElement {
       default:
         break;
     }
-
+    console.log(this.mood, 'Name: ' + this.cat.name, this.cat.printOutMoods());
   }
 
   static get styles() {

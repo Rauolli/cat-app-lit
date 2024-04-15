@@ -26,7 +26,7 @@ class Cat{
     // getter-Methoden
     get name(){ return this.#name; }
     get tiredness(){ return this.#tiredness; }
-    get hunger(){ return this.#hungriness; }
+    get hungriness(){ return this.#hungriness; }
     get cuddliness(){ return this.#cuddliness; }
     get happiness(){ return this.#happiness; }
     get image(){ return this.#image; }
@@ -37,7 +37,7 @@ class Cat{
         this.#tiredness = tiredness;
         this.checkIfInsideRange(this.#tiredness); 
     }
-    set hunger(hunger){
+    set hungriness(hunger){
         this.#hungriness = hunger; 
         this.checkIfInsideRange(this.#hungriness);
     }
@@ -63,23 +63,25 @@ class Cat{
     }
 
     feed(footBites){
-        this.hungriness -= parseInt(footBites);
-        this.happiness += parseInt(footBites);
-        this.cuddliness += parseInt(footBites);
+        const minInt = parseInt(footBites);
+        this.hungriness -= minInt;
+        this.happiness += minInt/2;
+        this.cuddliness += minInt/4;
     }
 
     play(hours){
-        this.tiredness += parseInt(hours);
-        this.happiness += parseInt(hours/4);
-        this.hungriness += parseInt(hours/4);
+        const minInt = parseInt(hours);
+        this.tiredness += minInt;
+        this.happiness += minInt/2;
+        this.hungriness += minInt/4;
     }
 
     pet(minutes){
         // in Number wandeln
         const minInt = parseInt(minutes);
         this.cuddliness -= minInt;
-        this.happiness += minInt;
-        this.tiredness += minInt/4;
+        this.happiness += minInt/2;
+        this.tiredness += minInt/2;
     }
 
     statusPrintOut(){
@@ -87,6 +89,10 @@ class Cat{
         <li>Ich bin ${this.checkStatus(this.tiredness)} (${this.tiredness}) müde.</li>  
         <li>Ich bin ${this.checkStatus(this.cuddliness)} (${this.cuddliness}) verschmust.</li>
         <li>Ich bin ${this.checkStatus(this.happiness)} (${this.happiness}) glücklich.</li>`);
+    }
+
+    printOutMoods(){
+        return `Hunger: ${this.hungriness}, Müdigkeit: ${this.tiredness}, Kuscheligkeit: ${this.cuddliness}, Glück: ${this.happiness}`;
     }
 
     checkStatus(value){       

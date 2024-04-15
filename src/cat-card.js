@@ -1,6 +1,7 @@
-import { LitElement, css, html } from 'lit'
-import { ChangingMood } from './changing-mood.js'
-import Cat from './cat-class.js'
+import { LitElement, css, html } from 'lit';
+import { ChangingMood } from './changing-mood.js';
+import { CatDescription } from './cat-description.js';
+import Cat from './cat-class.js';
 
 /**
  * An example element.
@@ -31,21 +32,13 @@ export class CatCard extends LitElement {
                     <img id="cat-image" src="${this.Image = this.image}" alt="this.Name = this.name">
                 </section>    
                 <section class="cat-change-status">
-                  <changin-mood mood="feed" moodString="Füttern"></changin-mood>
-                  <changin-mood mood="play" moodString="Spielen"></changin-mood>
-                  <changin-mood mood="pet" moodString="Streicheln"></changin-mood>
+                  <changin-mood mood="feed" moodString="Füttern" .cat="${this.cat}"></changin-mood>
+                  <changin-mood mood="play" moodString="Spielen" .cat="${this.cat}"></changin-mood>
+                  <changin-mood mood="pet" moodString="Streicheln" .cat="${this.cat}"></changin-mood>
                 </section>
-                <section class="cat-description">
-                    <ul>
-                        <li>Name: ${this.cat.name}</li>
-                        <li>Müdigkeit: ${this.cat.tiredness}</li>
-                        <li>Hunger: ${this.cat.hunger}</li>
-                        <li>Kuscheligkeit: ${this.cat.cuddliness}</li>
-                        <li>Glück: ${this.cat.happiness}</li>
-                    </ul>
-                </section>
+                <cat-description .cat=${this.cat}></cat-description>
             </article>
-      <p class="read-the-docs">${this.docsHint}</p>
+
     `
   }
 
@@ -62,6 +55,7 @@ export class CatCard extends LitElement {
     return this.name;
   }
 
+  
 
 
   static get styles() {
@@ -79,10 +73,6 @@ export class CatCard extends LitElement {
       gap: 2em;
     }
 
-    li{
-        list-style: none;
-    }
-
     img{
         border-radius: 15px;
         /* box-shadow: 5px 8px 10px rgba(45, 74, 57, 0.51); */
@@ -91,13 +81,7 @@ export class CatCard extends LitElement {
         object-fit: cover;
         /* object-position: 50% 50%; */
     }
-    ul{
-        margin-left: -2em;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1em;
-    }
+    
     h2{
         text-align: center;
         color: rgb(2, 50, 32);
@@ -113,16 +97,7 @@ export class CatCard extends LitElement {
         gap: 2em;
     }
 
-    .cat-description{
-        max-width: 100%;
-        min-width: 80%;
-        margin: 2em auto;
-        padding: 1em;
-        border-radius: 15px;
-        background-color: #264732;
-        color: #c3c38a;
-        font-size: 1.2rem;
-    }
+    
 
     @media (min-width: px){
         img{
@@ -144,4 +119,4 @@ export class CatCard extends LitElement {
   }
 }
 
-window.customElements.define('cat-card', CatCard)
+window.customElements.define('cat-card', CatCard);
