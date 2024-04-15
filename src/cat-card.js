@@ -1,4 +1,5 @@
 import { LitElement, css, html } from 'lit'
+import { ChangingMood } from './changing-mood.js'
 import Cat from './cat-class.js'
 
 /**
@@ -30,21 +31,9 @@ export class CatCard extends LitElement {
                     <img id="cat-image" src="${this.Image = this.image}" alt="this.Name = this.name">
                 </section>    
                 <section class="cat-change-status">
-                    <div class="brd">
-                        <label for="feed-rng">Füttern:</label>
-                        <input type="range" min="0" max="10" name="feed" id="feed-rng">
-                        <button id="feed-btn">OK</button>
-                    </div>
-                    <div class="brd">
-                        <label for="sleep-rng">Spielen:</label>
-                        <input type="range" min="0" max="10" name="play" id="play-rng">
-                        <button id="play-btn">OK</button>
-                    </div>
-                    <div class="brd">
-                        <label for="pet-rng">Streicheln:</label>
-                        <input type="range" min="0" max="10" name="pet" id="pet-rng">
-                        <button id="pet-btn">OK</button>
-                    </div>
+                  <changin-mood mood="feed" moodString="Füttern"></changin-mood>
+                  <changin-mood mood="play" moodString="Spielen"></changin-mood>
+                  <changin-mood mood="pet" moodString="Streicheln"></changin-mood>
                 </section>
                 <section class="cat-description">
                     <ul>
@@ -60,9 +49,6 @@ export class CatCard extends LitElement {
     `
   }
 
-  _onClick() {
-    this.count++
-  }
 
   set Image(image) {
     this.cat.image = image;
@@ -85,8 +71,8 @@ export class CatCard extends LitElement {
       margin: 2em auto;
       padding: 1em;
       border-radius: 15px;
-      background-color: rgba(222, 248, 233, 0.572);
-      box-shadow: 5px 8px 10px rgba(45, 74, 57, 0.51);
+      background-color: #f0e8d9ec;
+      box-shadow: 5px 8px 20px #1a010186;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -127,52 +113,17 @@ export class CatCard extends LitElement {
         gap: 2em;
     }
 
-    .brd{
-        width: 300px;
-        display: flex;
-        justify-content: space-between;
-        background-color: rgba(222, 248, 233, 0.572);;
-        border: 1px solid rgba(45, 74, 57, 0.8);
-        /* box-shadow: 3px 5px 8px rgba(45, 74, 57, 0.3); */
-        padding: 0.2em 0.6em;
-        border-radius: 5px;
-    }
-
-    .cat-change-status{
-        display: flex;
-        flex-flow: wrap column;
-        justify-content: center;
-        gap: 1.2em;
-    } 
-
     .cat-description{
         max-width: 100%;
         min-width: 80%;
         margin: 2em auto;
         padding: 1em;
         border-radius: 15px;
-        background-color: rgba(4, 104, 67, 0.4);
-        /* box-shadow: 5px 8px 10px rgba(45, 74, 57, 0.51); */
+        background-color: #264732;
+        color: #c3c38a;
+        font-size: 1.2rem;
     }
 
-    button{
-        background-color: rgba(4, 104, 67, 1);
-        border: 1px solid rgb(2, 46, 30);
-        box-shadow: 3px 2px 5px rgba(45, 74, 57, 0.3);
-        color: #cbcb70;
-        padding: 0.2em 1em;
-        border-radius: 3px;
-        transition: all 0.3s;
-    }
-
-    button:hover{
-        background-color: rgba(6, 225, 145, 0.675);
-        transform: scale(1.13);
-        color: #1f3c2a
-    }
-
-
-    
     @media (min-width: px){
         img{
             max-width: 70vw;
